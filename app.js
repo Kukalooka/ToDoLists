@@ -25,11 +25,24 @@ app.get('/', function (req, res) {
 app.post('/createUser', function (req, res) {
     console.log(req.body.username);
     let username = req.body.username;
-    const sql = `INSERT INTO user (username) VALUES ('${username}')`;
-    con.query(sql, function (err, result) {
+
+    const checkQuery = `SELECT COUNT(*) AS 'users' FROM user WHERE username = '${username}'`;
+    con.query(checkQuery, function (err, result) {
         if (err) throw err;
-        console.log("1 record inserted");
+
+        if (result[0].users < 1) {
+            const inserQuery = `INSERT INTO user (username) VALUES ('${username}')`;
+            con.query(inserQuery, function (err, result) {
+                if (err) throw err;
+                console.log("1 record inserted");
+                res.send('Success')
+            });
+        }
+        else {
+            res.send('Error')
+        }
     });
+
 })
 
 var server = app.listen(5000, function () {
