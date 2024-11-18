@@ -3,14 +3,16 @@ const app = express();
 const mysql = require('mysql');
 const bodyParser = require('body-parser')
 
+const port = process.env.PORT || 3000;
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "lists"
+    host: process.env.DATABASE_URL,
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASS,
+    database: process.env.DATABASE,
 });
 
 con.connect(function(err) {
@@ -45,6 +47,6 @@ app.post('/createUser', function (req, res) {
 
 })
 
-var server = app.listen(5000, function () {
-    console.log("Express App running at http://127.0.0.1:5000/");
+const server = app.listen(port, function () {
+    console.log("Express App running at http://127.0.0.1:" + port);
 })
