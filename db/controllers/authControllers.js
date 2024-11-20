@@ -81,20 +81,19 @@ const login = async (req, res) => {
     }
 };
 
-const validate = async (req, res) => {
-    jwt.verify(req.headers["authorization"], process.env.JWT_SECRET, (err, decoded) => {
-        if (err) {
-            console.log(err);
-        }
-        else{
-            console.log(decoded);
-        }
-    })
-}
+// const validate = async (req, res) => {
+//     jwt.verify(req.headers["authorization"], process.env.JWT_SECRET, (err, decoded) => {
+//         if (err) {
+//             console.log(err);
+//         }
+//         else{
+//             console.log(decoded);
+//         }
+//     })
+// }
 
 
 module.exports = {
     register,
     login,
-    validate,
 };

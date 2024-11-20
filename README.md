@@ -7,9 +7,8 @@ I just started this project so there's pretty much nothing here yet, so stay tun
 ## Things that need to be done:
 
 - Frontend... like all of it
-- Ensuring that usernames are unique
 - Creating lists and updating them on the backend
-- After database structure is finished, some kind of script that will automatically recreate it for anyone who wants to run this for themselves
+- Finish Database Structure
 
 ## Run Instructions
 
