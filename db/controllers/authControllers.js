@@ -17,7 +17,7 @@ const register = async (req, res) => {
     if (!username || !password) {
         res
             .status(400)
-            .json({ error: "Email or Password fields cannot be empty!" });
+            .json({ error: "Username or Password fields cannot be empty!" });
         return;
     }
     const salt = await bcrypt.genSalt(10);

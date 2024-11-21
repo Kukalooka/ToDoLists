@@ -14,6 +14,7 @@ app.use("/", authRoutes);
 
 connectDB();
 
+
 const server = app.listen(port, function () {
     console.log("Express App running at http://127.0.0.1:" + port);
 })
