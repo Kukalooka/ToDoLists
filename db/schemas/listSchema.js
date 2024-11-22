@@ -1,4 +1,4 @@
-const userSchema = `
+const listSchema = `
   CREATE TABLE IF NOT EXISTS lists (
       listId VARCHAR(255) UNIQUE NOT NULL,
       listName VARCHAR(30) NOT NULL,
@@ -7,4 +7,4 @@ const userSchema = `
   )
 `;
 
-module.exports = userSchema;
+module.exports = listSchema;
