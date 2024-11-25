@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors');
 const connectDB = require('./db/db');
 const authRoutes = require("./routes/authRoutes");
+const listRoutes = require("./routes/listRoutes");
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -11,6 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use("/", authRoutes);
+app.use("/", listRoutes);
 
 connectDB();
 
