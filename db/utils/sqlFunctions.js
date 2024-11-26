@@ -28,6 +28,20 @@ const checkRecordExists = (tableName, column, value) => {
     });
 };
 
+const getRecords = (tableName, column, value) => {
+    return new Promise((resolve, reject) => {
+        const query = `SELECT * FROM ${tableName} WHERE ${column} = ?`;
+
+        pool.query(query, [value], (err, results) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(results);
+            }
+        });
+    });
+};
+
 const insertRecord = (tableName, record) => {
     return new Promise((resolve, reject) => {
         const query = `INSERT INTO ${tableName} SET ?`;
@@ -46,4 +60,5 @@ module.exports = {
     createTable,
     checkRecordExists,
     insertRecord,
+    getRecords,
 };

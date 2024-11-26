@@ -3,8 +3,8 @@ const jwt = require("jsonwebtoken");
 const listSchema = require("../schemas/listSchema");
 const {
     createTable,
-    checkRecordExists,
     insertRecord,
+    getRecords,
 } = require("../utils/sqlFunctions");
 
 
@@ -51,7 +51,36 @@ const createList = async (req, res) => {
     }
 }
 
+const getLists = async (req, res) => {
+    let userId = 0
+
+    jwt.verify(req.headers["authorization"], process.env.JWT_SECRET, (err, decoded) => {
+        if (err) {
+            console.log(err);
+        }
+        else{
+            userId = decoded.userId
+        }
+    })
+
+    if (userId === 0){
+        res
+            .status(400)
+            .json({ error: "Invalid Token" });
+        return;
+    }
+
+    try {
+        await createTable(listSchema);
+        let records = await getRecords("lists", "userId", userId);
+        res.status(201).json({ records });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
 
 module.exports = {
-    createList
+    createList,
+    getLists,
 };
