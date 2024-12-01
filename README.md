@@ -9,6 +9,7 @@ The project is slowly unraveling but it ain't done yet!
 - Frontend... like all of it
 - Creating list elements and fetching them based on user's id
 - Refresh tokens
+- Confirm Email to register
 - Email password reset
 
 ## Run Instructions
