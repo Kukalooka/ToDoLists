@@ -19,4 +19,5 @@ Clone "template.env", rename it to ".env", populate all of the fields there and 
 ## Future Feature Ideas
 - Contextual list (list items change based on finished tasks)
 - Collaborative lists
+- Some kind of family / work group feature
 - Time sensitive list items
